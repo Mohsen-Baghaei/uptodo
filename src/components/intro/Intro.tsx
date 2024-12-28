@@ -1,27 +1,25 @@
 import { ReactElement } from "react";
 import IntroFirstPage from "./IntroFirstPage";
-import IntroSecondPage from "./IntroSecondPage";
-import IntroThirdPage from "./IntroThirdPage";
-import IntroFourthPage from "./IntroFourthPage";
+import IntroPages from "./IntroPages";
 
 import { useSelector } from "react-redux";
 import { introPage } from "../../app/features/introPages/introSlice";
-
-type PagesType = {
-  [key: number]: JSX.Element;
-};
+import RegistrationSelection from "../registration/RegistrationSelection";
 
 const Intro = (): ReactElement => {
   const pageNumber: number = useSelector(introPage);
+  const showIntro = localStorage.getItem("showIntro");
+  let content;
 
-  const pages: PagesType = {
-    0: <IntroFirstPage />,
-    1: <IntroSecondPage />,
-    2: <IntroThirdPage />,
-    3: <IntroFourthPage />,
-  };
+  if (showIntro === "false" || pageNumber === 4) {
+    content = <RegistrationSelection />;
+  } else if (pageNumber === 0) {
+    content = <IntroFirstPage />;
+  } else if (pageNumber < 4) {
+    content = <IntroPages />;
+  }
 
-  return <>{pages[pageNumber]}</>;
+  return <>{content}</>;
 };
 
 export default Intro;

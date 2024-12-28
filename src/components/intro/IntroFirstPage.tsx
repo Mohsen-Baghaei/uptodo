@@ -11,11 +11,11 @@ const IntroFirstPage = (): ReactElement => {
       <div className="w-3/4 md:w-3/5 xl:w-1/5 p-4 mt-32">
         <img src={intro1} alt={intro1} className="w-full" />
       </div>
-      <div className="mb-14 w-4/5 sm:w-3/5 flex justify-end p-4">
+      <div className="mb-12 w-4/5 sm:w-3/5 flex justify-end p-4">
         <button
           type="button"
           onClick={() => dispatch(incrementIntro())}
-          className="  text-2xl md:text-3xl text-white bg-violet-500 p-2 rounded-xl"
+          className="  text-2xl md:text-3xl text-white bg-blue-700 p-2 rounded-xl"
         >
           Next
         </button>

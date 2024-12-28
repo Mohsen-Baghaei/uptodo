@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import introReducer from "./features/introPages/introSlice";
+import usersReducer from "./features/registration/usersSlice";
 
 export const store = configureStore({
   reducer: {
     intro: introReducer,
+    users: usersReducer,
   },
 });
 
