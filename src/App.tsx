@@ -1,11 +1,11 @@
 import Intro from "./components/intro/Intro";
-import TodoMainPage from "./components/TodoMainPage";
+import TodoMainPage from "./components/mainTodos/TodoMainPage";
 
 function App() {
   return (
     <main className="w-full h-screen bg-slate-900">
-      <TodoMainPage />
       {/* <Intro /> */}
+      <TodoMainPage />
     </main>
   );
 }

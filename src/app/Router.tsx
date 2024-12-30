@@ -3,6 +3,7 @@ import App from "../App";
 import RegistrationSelection from "../components/registration/RegistrationSelection";
 import Login from "../components/registration/Login";
 import Register from "../components/registration/Register";
+import TodoMainPage from "../components/mainTodos/TodoMainPage";
 
 const Router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const Router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/mainPage",
+    element: <TodoMainPage />,
   },
 ]);
 

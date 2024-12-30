@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import images from "../assets/img/images.png";
+import images from "../../assets/img/images.png";
 
 const Avatar = (): ReactElement => {
   return (
