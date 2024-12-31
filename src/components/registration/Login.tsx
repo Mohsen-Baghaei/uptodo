@@ -37,7 +37,7 @@ const Login = (): ReactElement => {
   };
 
   return (
-    <div className="flex h-screen flex-1 flex-col justify-start px-6 py-10 lg:px-8 bg-slate-900">
+    <div className="flex flex-1 flex-col justify-start px-6 py-10 lg:px-8 bg-slate-900">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <p
           className={
