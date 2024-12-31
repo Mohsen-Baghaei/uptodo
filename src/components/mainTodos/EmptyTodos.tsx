@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import mainPage from "../../assets/img/others/mainPage.png";
 
-const Todos = (): ReactElement => {
+const EmptyTodos = (): ReactElement => {
   return (
     <>
       <div className="flex flex-col items-center justify-center text-slate-50 w-4/5 md:w-2/3 mx-auto m-5">
@@ -15,4 +15,4 @@ const Todos = (): ReactElement => {
   );
 };
 
-export default Todos;
+export default EmptyTodos;

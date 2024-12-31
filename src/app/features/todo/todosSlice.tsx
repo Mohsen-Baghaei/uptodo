@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
+
+import { RootState } from "../../store";
 
 import { TbSpeakerphone } from "react-icons/tb";
 import { IoMusicalNotesOutline } from "react-icons/io5";
@@ -110,12 +112,60 @@ export const categoryValue: categoryType[] = [
   },
 ];
 
-const initialState: any = [];
+export type StateType = {
+  id: string;
+  taskName: string;
+  taskDescription: string;
+  startDate: string;
+  endDate: string;
+  startTime: string;
+  endTime: string;
+  priority: string;
+  category: number;
+  checked: boolean;
+};
+
+const initialState: StateType[] = [];
 
 export const todosSlice = createSlice({
   name: "todos",
   initialState,
-  reducers: {},
+  reducers: {
+    createTask: {
+      reducer(state, action: PayloadAction<StateType>) {
+        state.push(action.payload);
+      },
+      prepare({
+        taskName,
+        taskDescription,
+        startDate,
+        endDate,
+        startTime,
+        endTime,
+        priority,
+        category,
+      }) {
+        return {
+          payload: {
+            id: nanoid(),
+            taskName,
+            taskDescription,
+            startDate,
+            endDate,
+            startTime,
+            endTime,
+            priority,
+            category,
+            checked: false,
+          },
+        };
+      },
+    },
+  },
 });
+
+export const { createTask } = todosSlice.actions;
+
+export const getAllTodos = (state: RootState) => state.todo;
 
 export default todosSlice.reducer;
