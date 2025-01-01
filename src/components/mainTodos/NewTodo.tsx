@@ -72,8 +72,7 @@ const NewTodo = (): ReactElement => {
         createTask({
           taskName,
           taskDescription,
-          startDate: JSON.stringify(date.startDate),
-          endDate: JSON.stringify(date.endDate),
+          startDate: String(date.startDate),
           startTime,
           endTime,
           priority,

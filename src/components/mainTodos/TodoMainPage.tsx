@@ -10,10 +10,18 @@ const TodoMainPage = (): ReactElement => {
 
   const showTodos = alltodos.map((todo) => <Todo key={todo.id} todo={todo} />);
 
+  const content =
+    alltodos.length !== 0 ? (
+      <ul className="w-full flex flex-col p-5">{showTodos}</ul>
+    ) : (
+      <EmptyTodos />
+    );
+
+  console.log(alltodos);
+
   return (
     <main className=" flex flex-col justify-between md:justify-start ">
-      <EmptyTodos />
-      <ul className="w-full flex flex-col p-5">{showTodos}</ul>
+      {content}
     </main>
   );
 };

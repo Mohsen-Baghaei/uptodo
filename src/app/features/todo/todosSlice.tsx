@@ -117,12 +117,17 @@ export type StateType = {
   taskName: string;
   taskDescription: string;
   startDate: string;
-  endDate: string;
   startTime: string;
   endTime: string;
-  priority: string;
+  date: string;
+  priority: priorityType;
   category: number;
   checked: boolean;
+};
+
+type checkTodoAction = {
+  payload: string;
+  type: string;
 };
 
 const initialState: StateType[] = [];
@@ -139,7 +144,6 @@ export const todosSlice = createSlice({
         taskName,
         taskDescription,
         startDate,
-        endDate,
         startTime,
         endTime,
         priority,
@@ -151,9 +155,9 @@ export const todosSlice = createSlice({
             taskName,
             taskDescription,
             startDate,
-            endDate,
             startTime,
             endTime,
+            date: String(new Date()),
             priority,
             category,
             checked: false,
@@ -161,10 +165,22 @@ export const todosSlice = createSlice({
         };
       },
     },
+    checkTodo: (state, action: checkTodoAction) => {
+      const id = action.payload;
+      const selectedTodo = state.find((todo) => todo.id === id);
+      const filteredTodos = state.filter((todo) => todo.id !== id);
+      if (selectedTodo) {
+        const result = [
+          ...filteredTodos,
+          { ...selectedTodo, checked: !selectedTodo.checked },
+        ];
+        return (state = result);
+      }
+    },
   },
 });
 
-export const { createTask } = todosSlice.actions;
+export const { createTask, checkTodo } = todosSlice.actions;
 
 export const getAllTodos = (state: RootState) => state.todo;
 
