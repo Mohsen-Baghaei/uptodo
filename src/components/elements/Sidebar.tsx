@@ -1,9 +1,9 @@
+import { ReactElement } from "react";
 import { BiHomeAlt2 } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 import { TbClockHour8 } from "react-icons/tb";
 import { CiUser, CiCalendar } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
-import { ReactElement } from "react";
 import {
   closeSidebar,
   sidebarStatus,
@@ -24,7 +24,7 @@ const Sidebar = (): ReactElement => {
 
   return (
     <div
-      className={`hidden md:flex lg:w-1/6 md:w-2/6 bg-slate-800 z-10 opacity-90 md:absolute left-0 bottom-0 section-min-height transition ease-in-out duration-500  ${
+      className={`hidden md:flex bg-slate-800 z-10 opacity-90 md:absolute left-0 bottom-0 section-min-height transition ease-in-out duration-500 text-nowrap  ${
         SidebarStatus ? "translate-x-0" : "-translate-x-full"
       }`}
     >

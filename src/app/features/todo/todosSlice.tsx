@@ -125,7 +125,7 @@ export type StateType = {
   checked: boolean;
 };
 
-type checkTodoAction = {
+type TodoAction = {
   payload: string;
   type: string;
 };
@@ -165,7 +165,7 @@ export const todosSlice = createSlice({
         };
       },
     },
-    checkTodo: (state, action: checkTodoAction) => {
+    checkTodo: (state, action: TodoAction) => {
       const id = action.payload;
       const selectedTodo = state.find((todo) => todo.id === id);
       const filteredTodos = state.filter((todo) => todo.id !== id);
@@ -177,11 +177,21 @@ export const todosSlice = createSlice({
         return (state = result);
       }
     },
+    deleteTodo: (state, action: TodoAction) => {
+      const id = action.payload;
+      const filteredTodos = state.filter((todo) => todo.id !== id);
+      return (state = [...filteredTodos]);
+    },
   },
 });
 
-export const { createTask, checkTodo } = todosSlice.actions;
+export const { createTask, checkTodo, deleteTodo } = todosSlice.actions;
 
 export const getAllTodos = (state: RootState) => state.todo;
+
+export const getTodo = (state: RootState, id: string) => {
+  const existTodo = state.todo.find((todo) => todo.id === id);
+  if (existTodo) return existTodo;
+};
 
 export default todosSlice.reducer;

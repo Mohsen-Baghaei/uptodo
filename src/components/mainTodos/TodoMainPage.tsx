@@ -17,8 +17,6 @@ const TodoMainPage = (): ReactElement => {
       <EmptyTodos />
     );
 
-  console.log(alltodos);
-
   return (
     <main className=" flex flex-col justify-between md:justify-start ">
       {content}

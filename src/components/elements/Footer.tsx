@@ -27,10 +27,10 @@ const Footer = (): ReactElement => {
       className={
         show
           ? "hidden"
-          : "md:hidden text-slate-50 w-full bottom-0 absolute bg-slate-800 rounded-t-3xl"
+          : "md:hidden text-slate-50 w-full absolute bottom-0  bg-slate-800 rounded-t-3xl z-10"
       }
     >
-      <section className="flex justify-between  w-11/12 mx-auto my-2 text-xs">
+      <section className="flex justify-between  w-11/12 mx-auto  text-xs py-2">
         <button
           onClick={() => direction("/")}
           className="flex flex-col justify-center items-center "

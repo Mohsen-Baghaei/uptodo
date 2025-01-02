@@ -6,7 +6,7 @@ import Sidebar from "./elements/Sidebar";
 
 const Layout = (): ReactElement => {
   return (
-    <main className="w-full h-screen bg-slate-900">
+    <main className="w-full min-h-screen bg-slate-900 relative">
       <Header />
       <Sidebar />
       <Outlet />

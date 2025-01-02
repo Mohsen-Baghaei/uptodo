@@ -15,7 +15,13 @@ const Header = (): ReactElement => {
   const SidebarStatus = useSelector(sidebarStatus);
 
   return (
-    <header className={show ? "hidden" : "flex justify-between p-5"}>
+    <header
+      className={
+        show
+          ? "hidden"
+          : "flex justify-between p-5 pb-0 sticky top-0 bg-slate-900 z-20"
+      }
+    >
       <button
         id="hamburger-button"
         onClick={() => dispatch(toggleSidebar())}

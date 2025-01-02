@@ -6,12 +6,13 @@ import Login from "./components/registration/Login";
 import Register from "./components/registration/Register";
 import Intro from "./components/intro/Intro";
 import NewTodo from "./components/mainTodos/NewTodo";
+import SingleTodo from "./components/mainTodos/SingleTodo";
 
 function App() {
   const showIntro = localStorage.getItem("showIntro");
 
   return (
-    <main className="w-full min-h-screen overflow-auto bg-slate-900">
+    <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/registration" element={<RegistrationSelection />} />
@@ -23,9 +24,11 @@ function App() {
           <Route path="/" element={showIntro ? <TodoMainPage /> : <Intro />} />
 
           <Route path="newtodo" element={<NewTodo />} />
+
+          <Route path="/task/:taskId" element={<SingleTodo />} />
         </Route>
       </Routes>
-    </main>
+    </>
   );
 }
 
