@@ -46,7 +46,7 @@ const Footer = (): ReactElement => {
           <p>Calendar</p>
         </button>
         <button
-          onClick={() => direction("/")}
+          onClick={() => direction("/newtask")}
           className="-translate-y-8 size-14 bg-blue-500 rounded-full flex justify-center items-center"
         >
           <FaPlus className="size-7" />

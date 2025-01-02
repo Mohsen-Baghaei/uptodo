@@ -7,6 +7,8 @@ import Register from "./components/registration/Register";
 import Intro from "./components/intro/Intro";
 import NewTodo from "./components/mainTodos/NewTodo";
 import SingleTodo from "./components/mainTodos/SingleTodo";
+import EditTodo from "./components/mainTodos/EditTodo";
+import Missing from "./components/elements/Missing";
 
 function App() {
   const showIntro = localStorage.getItem("showIntro");
@@ -23,9 +25,13 @@ function App() {
 
           <Route path="/" element={showIntro ? <TodoMainPage /> : <Intro />} />
 
-          <Route path="newtodo" element={<NewTodo />} />
+          <Route path="newtask" element={<NewTodo />} />
 
           <Route path="/task/:taskId" element={<SingleTodo />} />
+
+          <Route path="/edittask/:taskId" element={<EditTodo />} />
+
+          <Route path="*" element={<Missing />} />
         </Route>
       </Routes>
     </>

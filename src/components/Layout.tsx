@@ -10,7 +10,7 @@ const Layout = (): ReactElement => {
       <Header />
       <Sidebar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 };

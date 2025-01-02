@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation as useReactRouterLocation } from "react-router";
 
 const useCustomLocation = () => {
-  const notShowItem = ["/registration", "/login", "/register"];
+  const notShowItem = ["/registration", "/login", "/register", "*"];
 
   const [show, setShow] = useState<boolean>(false);
 

@@ -112,7 +112,7 @@ const SingleTodo = (): ReactElement => {
               <span className="relative">
                 {showStartDate}
                 <span
-                  className={`absolute transition-all rounded-full duration-700 w-1 h-1 bg-orange-300 bottom-0 left-0 ${
+                  className={`absolute transition-all rounded-full duration-700 w-1 h-1 bg-orange-300 bottom-0 left-0 mt-1 ${
                     border ? "w-full h-0.5 " : ""
                   }`}
                 ></span>
@@ -125,7 +125,7 @@ const SingleTodo = (): ReactElement => {
                   <span className="relative">
                     {startTime}
                     <span
-                      className={`absolute transition-all rounded-full duration-700 w-1 h-1 bg-orange-300 bottom-0 left-0 ${
+                      className={`absolute transition-all rounded-full duration-700 w-1 h-1 bg-orange-300 bottom-0 left-0 mt-1 ${
                         border ? "w-full h-0.5 " : ""
                       }`}
                     ></span>
@@ -134,7 +134,7 @@ const SingleTodo = (): ReactElement => {
                   <span className="relative">
                     {endTime}
                     <span
-                      className={`absolute transition-all rounded-full duration-700 w-1 h-1 bg-orange-300 bottom-0 left-0 ${
+                      className={`absolute transition-all rounded-full duration-700 w-1 h-1 bg-orange-300 bottom-0 left-0 mt-1 ${
                         border ? "w-full h-0.5 " : ""
                       }`}
                     ></span>
@@ -160,7 +160,7 @@ const SingleTodo = (): ReactElement => {
         </article>
         <article className="flex justify-end items-end gap-1">
           <Link
-            to={``}
+            to={`/edittask/${taskId}`}
             className="flex flex-row w-full  items-center justify-center gap-1 p-1.5 bg-slate-900 rounded-lg"
           >
             <FaEdit className="size-4 md:size-5 shrink-0 text-slate-50" />

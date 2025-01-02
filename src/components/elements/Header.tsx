@@ -25,7 +25,7 @@ const Header = (): ReactElement => {
       <button
         id="hamburger-button"
         onClick={() => dispatch(toggleSidebar())}
-        className={`hidden md:block text-3xl cursor-pointer relative size-8 mt-1 md:mt-3 ${
+        className={`block text-3xl cursor-pointer relative size-8 mt-1 md:mt-3 ${
           SidebarStatus ? "toggle-btn" : ""
         }`}
       >

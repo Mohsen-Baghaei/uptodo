@@ -130,7 +130,10 @@ type TodoAction = {
   type: string;
 };
 
-const initialState: StateType[] = [];
+const initialState: StateType[] =
+  localStorage.getItem("todo") !== null
+    ? JSON.parse(localStorage.getItem("todo")!)
+    : [];
 
 export const todosSlice = createSlice({
   name: "todos",
@@ -139,6 +142,7 @@ export const todosSlice = createSlice({
     createTask: {
       reducer(state, action: PayloadAction<StateType>) {
         state.push(action.payload);
+        localStorage.setItem("todo", JSON.stringify(state));
       },
       prepare({
         taskName,
@@ -174,18 +178,55 @@ export const todosSlice = createSlice({
           ...filteredTodos,
           { ...selectedTodo, checked: !selectedTodo.checked },
         ];
+        localStorage.setItem("todo", JSON.stringify(result));
         return (state = result);
       }
     },
     deleteTodo: (state, action: TodoAction) => {
       const id = action.payload;
       const filteredTodos = state.filter((todo) => todo.id !== id);
+      localStorage.setItem("todo", JSON.stringify([...filteredTodos]));
       return (state = [...filteredTodos]);
+    },
+    editTask: (state, action) => {
+      const {
+        id,
+        taskName,
+        taskDescription,
+        startDate,
+        startTime,
+        endTime,
+        priority,
+        category,
+        checked,
+        date,
+      } = action.payload;
+      const filteredTodos = state.filter((todo) => todo.id !== id);
+      if (id) {
+        const result = [
+          ...filteredTodos,
+          {
+            id,
+            taskName,
+            taskDescription,
+            startDate,
+            startTime,
+            endTime,
+            priority,
+            category,
+            checked,
+            date,
+          },
+        ];
+        localStorage.setItem("todo", JSON.stringify(result));
+        return (state = result);
+      }
     },
   },
 });
 
-export const { createTask, checkTodo, deleteTodo } = todosSlice.actions;
+export const { createTask, checkTodo, deleteTodo, editTask } =
+  todosSlice.actions;
 
 export const getAllTodos = (state: RootState) => state.todo;
 
