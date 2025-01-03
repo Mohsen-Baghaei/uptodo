@@ -9,6 +9,8 @@ import NewTodo from "./components/mainTodos/NewTodo";
 import SingleTodo from "./components/mainTodos/SingleTodo";
 import EditTodo from "./components/mainTodos/EditTodo";
 import Missing from "./components/elements/Missing";
+import Profile from "./components/elements/profile/Profile";
+import About from "./components/elements/About";
 
 function App() {
   const showIntro = localStorage.getItem("showIntro");
@@ -30,6 +32,10 @@ function App() {
           <Route path="/task/:taskId" element={<SingleTodo />} />
 
           <Route path="/edittask/:taskId" element={<EditTodo />} />
+
+          <Route path="/profile" element={<Profile />} />
+
+          <Route path="/about" element={<About />} />
 
           <Route path="*" element={<Missing />} />
         </Route>

@@ -1,4 +1,9 @@
-import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createSelector,
+  createSlice,
+  nanoid,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 
 import { RootState } from "../../store";
 
@@ -229,6 +234,12 @@ export const { createTask, checkTodo, deleteTodo, editTask } =
   todosSlice.actions;
 
 export const getAllTodos = (state: RootState) => state.todo;
+
+export const getTodoStatus = createSelector([getAllTodos], (todos) => {
+  const leftTodo = todos.filter((todo) => todo.checked === false).length;
+  const doneTodo = todos.length - leftTodo;
+  return { leftTodo, doneTodo };
+});
 
 export const getTodo = (state: RootState, id: string) => {
   const existTodo = state.todo.find((todo) => todo.id === id);

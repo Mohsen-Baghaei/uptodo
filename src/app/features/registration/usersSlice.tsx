@@ -1,4 +1,5 @@
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 
 type User = {
   user: string;
@@ -6,9 +7,11 @@ type User = {
   id: string;
 };
 
-type StateType = User[];
-
-const initialState: StateType = [];
+const initialState: User = {
+  user: "",
+  pwd: "",
+  id: "",
+};
 
 export const usersSlice = createSlice({
   name: "users",
@@ -16,7 +19,7 @@ export const usersSlice = createSlice({
   reducers: {
     createUser: {
       reducer(state, action: PayloadAction<User>) {
-        state.push(action.payload);
+        state = action.payload;
       },
       prepare(user: string, pwd: string) {
         return {
@@ -28,8 +31,14 @@ export const usersSlice = createSlice({
         };
       },
     },
+    changeUserName: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
 
 export const { createUser } = usersSlice.actions;
+
+export const getUser = (state: RootState) => state.users;
+
 export default usersSlice.reducer;
