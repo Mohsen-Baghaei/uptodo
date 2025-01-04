@@ -135,11 +135,20 @@ export const usersSlice = createSlice({
       state.pwd = action.payload;
       localStorage.setItem("user", JSON.stringify(state));
     },
+    changeAvatar: (state, action) => {
+      state.avatar = action.payload;
+      localStorage.setItem("user", JSON.stringify(state));
+    },
   },
 });
 
-export const { createUser, changeUserName, handleLogin, changePassword } =
-  usersSlice.actions;
+export const {
+  createUser,
+  changeUserName,
+  handleLogin,
+  changePassword,
+  changeAvatar,
+} = usersSlice.actions;
 
 export const getUser = (state: RootState) => state.users;
 

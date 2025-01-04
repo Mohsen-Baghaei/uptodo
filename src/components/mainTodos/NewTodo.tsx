@@ -93,7 +93,7 @@ const NewTodo = (): ReactElement => {
   };
 
   return (
-    <div className="flex w-4/5 mx-auto flex-col justify-start items-start">
+    <div className="flex w-4/5 mx-auto flex-col justify-start items-start overflow-visible">
       <p
         className={
           errMsg

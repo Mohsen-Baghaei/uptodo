@@ -8,7 +8,7 @@ const IntroFirstPage = (): ReactElement => {
 
   return (
     <div className="w-4xl h-screen mx-auto flex flex-col justify-between items-center gap-6">
-      <div className="w-3/4 md:w-3/5 xl:w-1/5 p-4 mt-32">
+      <div className="w-3/4 md:w-3/5 xl:w-1/5 p-4 ">
         <img src={intro1} alt={intro1} className="w-full" />
       </div>
       <div className="mb-12 w-4/5 sm:w-3/5 flex justify-end p-4">

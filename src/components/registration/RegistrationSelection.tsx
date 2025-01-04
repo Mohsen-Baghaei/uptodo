@@ -3,9 +3,9 @@ import { Link } from "react-router";
 
 const RegistrationSelection = (): ReactElement => {
   return (
-    <div className="flex w-4xl md:w-4/5 min-h-screen flex-1 flex-col justify-between px-6 py-10 lg:px-8 mx-auto bg-slate-900">
+    <div className="flex w-4xl md:w-4/5 min-h-screen flex-1 flex-col justify-between px-6 py-16 lg:px-8 mx-auto bg-slate- ">
       <div className="sm:mx-auto w-full">
-        <h2 className="mt-10 text-4xl md:text-7xl font-bold text-center text-gray-200 ">
+        <h2 className=" text-4xl md:text-7xl font-bold text-center text-gray-200 ">
           Welcome to UpTodo
         </h2>
         <div>

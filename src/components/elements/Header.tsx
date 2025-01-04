@@ -31,7 +31,7 @@ const Header = (): ReactElement => {
       >
         <div className="bg-white w-8 h-1 rounded absolute top-4 -mt-0.5 transition-all duration-500 before:content-[''] before:bg-white before:w-8 before:h-1 before:rounded before:absolute before:-translate-x-4 before:-translate-y-3 before:transition-all before:duration-500 after:content-[''] after:bg-white after:w-8 after:h-1 after:rounded after:absolute after:-translate-x-4 after:translate-y-3 after:transition-all after:duration-500"></div>
       </button>
-      <h2 className="text-3xl mb-6 md:text-5xl text-white">Index</h2>
+      <h2 className="text-3xl mb-6 md:text-5xl text-white font-bold">Index</h2>
       <Avatar />
     </header>
   );

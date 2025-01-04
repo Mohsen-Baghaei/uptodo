@@ -25,7 +25,7 @@ const Sidebar = (): ReactElement => {
 
   return (
     <div
-      className={`flex bg-slate-800 z-10 opacity-90 absolute left-0 bottom-0 section-min-height transition ease-in-out duration-500 text-nowrap  ${
+      className={`flex bg-slate-800 z-10 opacity-90 fixed left-0 bottom-0 section-min-height transition ease-in-out duration-500 text-nowrap md:pt-5  ${
         SidebarStatus ? "translate-x-0" : "-translate-x-full"
       }`}
     >

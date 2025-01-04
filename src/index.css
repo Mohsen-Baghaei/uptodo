@@ -4,7 +4,7 @@
 
 @layer utilities {
   .section-min-height {
-    min-height: calc(100vh - 92px);
+    top: calc(72px);
   }
 
   .toggle-btn {
