@@ -1,11 +1,15 @@
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { FaChevronRight, FaUser } from "react-icons/fa";
 import { RiInformation2Fill } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { changeUserName } from "../../app/features/registration/usersSlice";
 
 const USER_REGEX: RegExp = /^[A-z][A-z0-9-_]{3,23}$/;
 
 const ProfileName = (): ReactElement => {
   const [show, setShow] = useState(false);
+
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState<string>("");
   const [userFocus, setUserFocus] = useState<boolean>(false);
@@ -20,6 +24,24 @@ const ProfileName = (): ReactElement => {
 
   const onUserChange = (e: ChangeEvent<HTMLInputElement>) =>
     setUser(e.target.value);
+
+  const handleEdit = () => {
+    const v1: boolean = USER_REGEX.test(user);
+
+    if (!v1) {
+      setErrMsg("Invalid Entry");
+      return;
+    }
+    dispatch(changeUserName(user));
+    setUser("");
+    setShow(false);
+  };
+
+  const handleCancel = () => {
+    setShow(false);
+    setUser("");
+    setUserFocus(false);
+  };
 
   return (
     <article className="flex flex-col items-start justify-center w-full p-2 bg-slate-700 rounded-xl">
@@ -60,7 +82,7 @@ const ProfileName = (): ReactElement => {
           onFocus={() => setUserFocus(true)}
           onBlur={() => setUserFocus(false)}
           placeholder="Enter your Username"
-          className={`block w-full md:w-1/3  rounded-md bg-white px-3 py-1.5 text-base text-gray-900  placeholder:text-gray-500  sm:text-sm/6 ${
+          className={`block w-full md:w-1/3 rounded-md bg-white px-3 py-1.5 text-base text-gray-900  placeholder:text-gray-500  sm:text-sm/6 ${
             user && validUser
               ? "outline outline-2 outline-offset-1 outline-green-500"
               : user && !validUser
@@ -86,14 +108,15 @@ const ProfileName = (): ReactElement => {
         <div className="flex items-center justify-center gap-2 w-full md:w-1/3 ">
           <button
             type="button"
-            onClick={() => setShow((prev) => !prev)}
+            onClick={handleCancel}
             className="w-1/2 bg-rose-600 text-lg p-1 font-bold text-slate-200 rounded-lg"
           >
             Cancel
           </button>
           <button
             type="button"
-            disabled={!user ? true : false}
+            onClick={handleEdit}
+            disabled={!validUser ? true : false}
             className="w-1/2 bg-teal-600 text-lg p-1 font-bold text-slate-200 rounded-lg disabled:bg-slate-500"
           >
             Edit

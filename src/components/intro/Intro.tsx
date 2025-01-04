@@ -5,16 +5,21 @@ import IntroPages from "./IntroPages";
 import { useSelector } from "react-redux";
 import { introPage } from "../../app/features/introPages/introSlice";
 import { useNavigate } from "react-router";
+import { getUser } from "../../app/features/registration/usersSlice";
 
 const Intro = (): ReactElement => {
   const pageNumber: number = useSelector(introPage);
   const showIntro = localStorage.getItem("showIntro");
 
+  const errMsg = useSelector(getUser);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (showIntro === "false" || pageNumber === 4) {
+    if ((showIntro === "false" || pageNumber === 4) && !errMsg.error) {
       navigate("/registration");
+    } else if ((showIntro === "false" || pageNumber === 4) && errMsg.error) {
+      navigate("/login");
     }
   }, [showIntro, pageNumber, navigate]);
 

@@ -22,10 +22,8 @@ const IntroPages = (): ReactElement => {
 
   const pageData: PageDataType = useSelector(selectedPage);
 
-  console.log("local", localStorage.getItem("showIntro"));
-
   return (
-    <div className="w-4xl h-full mx-auto flex flex-col justify-between items-center relative">
+    <div className="w-4xl h-screen mx-auto flex flex-col justify-between items-center relative">
       <button
         type="button"
         onClick={() => dispatch(skipIntro())}

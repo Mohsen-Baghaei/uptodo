@@ -7,7 +7,7 @@ const IntroFirstPage = (): ReactElement => {
   const dispatch = useDispatch();
 
   return (
-    <div className="w-4xl h-full mx-auto flex flex-col justify-between items-center gap-6">
+    <div className="w-4xl h-screen mx-auto flex flex-col justify-between items-center gap-6">
       <div className="w-3/4 md:w-3/5 xl:w-1/5 p-4 mt-32">
         <img src={intro1} alt={intro1} className="w-full" />
       </div>

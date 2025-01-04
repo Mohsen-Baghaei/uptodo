@@ -9,11 +9,15 @@ import NewTodo from "./components/mainTodos/NewTodo";
 import SingleTodo from "./components/mainTodos/SingleTodo";
 import EditTodo from "./components/mainTodos/EditTodo";
 import Missing from "./components/elements/Missing";
-import Profile from "./components/elements/profile/Profile";
+import Profile from "./components/profile/Profile";
 import About from "./components/elements/About";
+import { useSelector } from "react-redux";
+import { getUser } from "./app/features/registration/usersSlice";
 
 function App() {
   const showIntro = localStorage.getItem("showIntro");
+
+  const Loggedin = useSelector(getUser);
 
   return (
     <>
@@ -25,7 +29,12 @@ function App() {
 
           <Route path="/register" element={<Register />} />
 
-          <Route path="/" element={showIntro ? <TodoMainPage /> : <Intro />} />
+          <Route
+            path="/"
+            element={
+              showIntro && Loggedin.loggedin ? <TodoMainPage /> : <Intro />
+            }
+          />
 
           <Route path="newtask" element={<NewTodo />} />
 

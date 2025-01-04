@@ -6,7 +6,7 @@ import {
   useState,
   FormEvent,
 } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { RiInformation2Fill } from "react-icons/ri";
 
@@ -19,6 +19,7 @@ const PWD_REGEX: RegExp =
 
 const Register = (): ReactElement => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userRef = useRef<HTMLInputElement>(null);
   const errRef = useRef<HTMLParagraphElement>(null);
@@ -74,7 +75,12 @@ const Register = (): ReactElement => {
       return;
     }
 
-    dispatch(createUser(user, pwd));
+    dispatch(createUser({ user, pwd }));
+
+    setUser("");
+    setPwd("");
+    setMatchPwd("");
+    navigate("/login");
   };
 
   return (

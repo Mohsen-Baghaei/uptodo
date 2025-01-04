@@ -6,11 +6,20 @@ import {
   ChangeEvent,
   FormEvent,
 } from "react";
-import { Link } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router";
+import {
+  getUser,
+  handleLogin,
+} from "../../app/features/registration/usersSlice";
 
 const Login = (): ReactElement => {
   const userRef = useRef<HTMLInputElement>(null);
   const errRef = useRef<HTMLParagraphElement>(null);
+
+  const UserProp = useSelector(getUser);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState<string>("");
 
@@ -32,8 +41,16 @@ const Login = (): ReactElement => {
     setErrMsg("");
   }, [user, pwd]);
 
+  useEffect(() => {
+    setErrMsg(UserProp.error);
+  }, [UserProp.error]);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch(handleLogin({ user, pwd }));
+    navigate("/");
+    setUser("");
+    setPwd("");
   };
 
   return (
@@ -70,6 +87,7 @@ const Login = (): ReactElement => {
                 type="text"
                 required
                 value={user}
+                ref={userRef}
                 onChange={onUserChange}
                 placeholder="Enter your Username"
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
